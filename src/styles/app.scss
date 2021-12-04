@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden auto;
+}
+
+.section-container {
+    .section-cainter-header {
+        box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.25), inset 4px 4px 10px #ebebeb;
+        filter: drop-shadow(4px 4px 10px #c4c4c4);
+        backdrop-filter: blur(20px);
+        background: rgba(141, 255, 255, 0.19);
+        color: #00c0c0;
+        border-radius: 30px;
+        &.red {
+            background: rgba(225, 201, 255, 0.19);
+            color: #cb3535;
+        }
+        &.blue {
+            background: rgba(132, 189, 255, 0.19);
+            color: #0359bd;
+        }
+    }
+    .section-container-content {
+        background: rgba(229, 229, 229, 0.26);
+        box-shadow: 4px 4px 10px #c4c4c4, inset -4px -4px 10px #c4c4c4, inset 4px 4px 10px #e0e0e0;
+        backdrop-filter: blur(20px);
+        border-radius: 10px;
+    }
+}
+
+.abonne-container {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25), inset 4px 4px 10px #ebebeb, inset -4px -4px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+}
