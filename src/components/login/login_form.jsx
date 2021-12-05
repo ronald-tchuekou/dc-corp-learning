@@ -52,7 +52,9 @@ export const LoginForm = (props) => {
                             fill="#FF7575"
                         />
                     </svg>
-                    <span>Me connecter avec Google</span>
+                    <span className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+                        Me connecter avec Google
+                    </span>
                 </button>
             </div>
 
@@ -73,7 +75,9 @@ export const LoginForm = (props) => {
                             fill="currentColor"
                         />
                     </svg>
-                    <span> Me connecter avec Github</span>
+                    <span className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+                        Me connecter avec Github
+                    </span>
                 </button>
             </div>
 
@@ -94,7 +98,9 @@ export const LoginForm = (props) => {
                             fill="#27A8E0"
                         />
                     </svg>
-                    <span>Me connecter avec Facebook</span>
+                    <span className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+                        Me connecter avec Facebook
+                    </span>
                 </button>
             </div>
 

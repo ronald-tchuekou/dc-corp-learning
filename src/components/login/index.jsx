@@ -16,7 +16,7 @@ export const Login = (props) => {
     }, [])
     return (
         <div className="flex justify-center items-center w-full pb-8 md:pb-16 md:pt-44">
-            <div className="relative w-1/2" style={{ height: 600 }}>
+            <div className="relative w-11/12 md:w-1/2" style={{ height: 600 }}>
                 <div className="absolute -top-44 -left-32">
                     <LoginSaly1 />
                 </div>
