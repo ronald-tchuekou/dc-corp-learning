@@ -10,6 +10,7 @@ import { Content as TutoContent } from './tutoriels/content'
 import { Pagination as AppPagination } from './globals/paginations'
 import { Banner as FormationBanner } from './formation/banner'
 import { Content as FormationContent } from './formation/content'
+import { Login as LoginContent } from './login'
 
 export {
     AppHead,
@@ -24,4 +25,5 @@ export {
     AppPagination,
     FormationBanner,
     FormationContent,
+    LoginContent,
 }
