@@ -1,4 +1,4 @@
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { LangContext } from '../../contexts'
 import { Lang } from '../../lang'
@@ -14,7 +14,9 @@ export const AppHeader = (props) => {
     const [showHeader, setShowHeader] = React.useState(true)
 
     React.useEffect(() => {
-        setActive(window.location.pathname || '')
+        let split_path = window.location.pathname.split('/')
+        const path = split_path[1] || ''
+        setActive('/' + path)
         let lastScrollTop = 0
         document.body.addEventListener('scroll', () => {
             const scrollTop = document.body.scrollTop

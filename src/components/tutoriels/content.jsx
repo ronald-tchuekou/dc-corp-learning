@@ -9,7 +9,7 @@ export const Content = (props) => {
             code: 'code1',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
-            title: 'Redimensionnement en drag’n drop',
+            title: 'Redimensionnement en drag and drop',
             description:
                 'Dans ce tutoriel, on vous propose de découvrir comment creéer un système de redimensionnement en javascript. L’object est de permettre...',
             parent: null,
@@ -49,7 +49,7 @@ export const Content = (props) => {
             code: 'code5',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
-            title: 'Redimensionnement en drag’n drop',
+            title: 'Redimensionnement en drag and drop',
             description:
                 'Dans ce tutoriel, on vous propose de découvrir comment creéer un système de redimensionnement en javascript. L’object est de permettre...',
             parent: null,

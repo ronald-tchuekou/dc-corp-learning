@@ -25,7 +25,7 @@ export const Banner = (props) => {
                 </p>
             </div>
             <div className="flex-1 flex justify-center items-center">
-                <div className="w-full md:w-4/6">
+                <div className={`w-full md:w-4/6 ${page === 1 ? '' : 'hidden md:flex'}`}>
                     <TutoBannerImage />
                 </div>
             </div>

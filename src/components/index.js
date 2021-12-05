@@ -8,6 +8,8 @@ import { HAbonne as HomeAbonne } from './home/abonne'
 import { Banner as TutoBanner } from './tutoriels/banner'
 import { Content as TutoContent } from './tutoriels/content'
 import { Pagination as AppPagination } from './globals/paginations'
+import { Banner as FormationBanner } from './formation/banner'
+import { Content as FormationContent } from './formation/content'
 
 export {
     AppHead,
@@ -20,4 +22,6 @@ export {
     TutoBanner,
     TutoContent,
     AppPagination,
+    FormationBanner,
+    FormationContent,
 }
