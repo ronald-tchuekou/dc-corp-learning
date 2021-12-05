@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppFooter, AppHead, AppHeader } from '../src/components'
+import { AppFooter, AppHead, AppHeader, TutoBanner, TutoContent } from '../src/components'
 import { LangContext } from '../src/contexts'
 import { Lang } from '../src/lang'
 
@@ -18,7 +18,10 @@ export default function Tutoriels() {
         <LangContext.Provider value={lang_context}>
             <AppHead title={Lang.tutoriel[lang]} />
             <AppHeader />
-            <main className="container mx-auto bg-red-200 h-10"></main>
+            <main className="w-full h-auto">
+                <TutoBanner />
+                <TutoContent />
+            </main>
             <AppFooter />
         </LangContext.Provider>
     )
