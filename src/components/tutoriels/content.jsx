@@ -1,6 +1,9 @@
+import { useRouter } from 'next/router'
 import React from 'react'
+import { AppPagination } from '..'
 
 export const Content = (props) => {
+    const { page } = props
     const CONTENT = [
         {
             code: 'code1',
@@ -103,6 +106,7 @@ export const Content = (props) => {
             time: '30 min',
         },
     ]
+    const router = useRouter()
     return (
         <div className="container pb-3 px-7 mx-auto">
             <div className="flex justify-center md:justify-end text-sm pb-3">
@@ -152,6 +156,19 @@ export const Content = (props) => {
                     <ContentItem item={item} key={item.code} />
                 ))}
             </div>
+
+            <div className="flex justify-center items-center">
+                <AppPagination
+                    currentPage={page || 1}
+                    count={15}
+                    onChange={(value) =>
+                        router.push({
+                            pathname: '/tutoriels/[page]',
+                            query: { page: value },
+                        })
+                    }
+                />
+            </div>
         </div>
     )
 }
@@ -160,7 +177,7 @@ export const ContentItem = (props) => {
     const { item } = props
     return (
         <div>
-            <div className="backdrop-filter backdrop-blur-sm transition duration-300 cursor-default bg-gray-100 bg-opacity-25 border border-purple-500 border-opacity-25 shadow-lg rounded-md transform hover:scale-110 hover:z-10 active:scale-100 space-y-2 overflow-hidden">
+            <div className="backdrop-filter backdrop-blur-sm transition duration-300 cursor-default bg-gray-100 bg-opacity-25 border border-purple-500 border-opacity-25 hover:shadow rounded-md transform hover:scale-105 hover:z-10 active:scale-100 space-y-2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <div className="flex-none">
                         <img className="w-12 h-12" src={item.logo} alt="item logo" />

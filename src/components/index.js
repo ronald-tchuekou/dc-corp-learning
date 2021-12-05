@@ -7,5 +7,17 @@ import { Section2 as HomeSection2 } from './home/section2'
 import { HAbonne as HomeAbonne } from './home/abonne'
 import { Banner as TutoBanner } from './tutoriels/banner'
 import { Content as TutoContent } from './tutoriels/content'
+import { Pagination as AppPagination } from './globals/paginations'
 
-export { AppHead, AppHeader, AppFooter, HomeBanner, HomeSection1, HomeSection2, HomeAbonne, TutoBanner, TutoContent }
+export {
+    AppHead,
+    AppHeader,
+    AppFooter,
+    HomeBanner,
+    HomeSection1,
+    HomeSection2,
+    HomeAbonne,
+    TutoBanner,
+    TutoContent,
+    AppPagination,
+}
