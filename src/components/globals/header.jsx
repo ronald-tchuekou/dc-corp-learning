@@ -276,7 +276,10 @@ export const AppHeader = (props) => {
                     <div className="flex flex-row items-center">
                         <div className="flex items-center justify-center">
                             <button
-                                onClick={() => router.push('/login')}
+                                onClick={() => {
+                                    setShow(false)
+                                    router.push('/login')
+                                }}
                                 className={`pl-5 pr-1 flex justify-between items-center transition text-gray-600 hover:text-purple-700`}
                             >
                                 <svg
@@ -308,7 +311,10 @@ export const AppHeader = (props) => {
                                 />
                             </svg>
                             <button
-                                onClick={() => router.push('/login?subscribe=true')}
+                                onClick={() => {
+                                    setShow(false)
+                                    router.push('/login?subscribe=true')
+                                }}
                                 className={`pl-1 flex justify-between items-center transition text-gray-600 hover:text-purple-700 font-semibold`}
                             >
                                 {Lang.sign_in[lang]}

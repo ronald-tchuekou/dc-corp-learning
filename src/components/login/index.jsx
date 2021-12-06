@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { DrawerContent } from '../../scripts'
 import { LoginSaly1, LoginSaly2 } from '../svg'
@@ -7,6 +8,7 @@ import { SignInForm } from './sign_in_form'
 export const Login = (props) => {
     const drawer_ref = React.useRef(null)
     const [drawer, setDrawer] = React.useState(undefined)
+
     React.useEffect(() => {
         setDrawer(new DrawerContent(drawer_ref.current))
         return () => {
@@ -14,6 +16,18 @@ export const Login = (props) => {
             else drawer.gotToItem(0)
         }
     }, [])
+
+    const router = useRouter()
+    const query = router.query
+
+    React.useMemo(() => {
+        if (query.subscribe) {
+            if (drawer) drawer.next()
+        } else {
+            if (drawer) drawer.previous()
+        }
+    }, [query, drawer])
+
     return (
         <div className="flex justify-center items-center w-full pb-8 md:pb-16 md:pt-44">
             <div className="relative w-11/12 md:w-1/2" style={{ height: 600 }}>
@@ -26,12 +40,20 @@ export const Login = (props) => {
                 <div className="absolute top-0 left-0 bottom-0 right-0" ref={drawer_ref}>
                     <div className="w-full h-full p-2">
                         <div className="w-full h-full login-container ">
-                            <LoginForm signIn={() => drawer.next()} />
+                            <LoginForm
+                                signIn={() => {
+                                    router.push('/login?subscribe=true') /*drawer.next()*/
+                                }}
+                            />
                         </div>
                     </div>
                     <div className="w-full h-full p-2">
                         <div className="w-full h-full login-container ">
-                            <SignInForm back={() => drawer.previous()} />
+                            <SignInForm
+                                back={() => {
+                                    router.push('/login') /*.previous()*/
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
