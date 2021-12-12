@@ -21,7 +21,7 @@ export const Section2 = (props) => {
                         Créer un compte
                     </button>
                     <button className="flex-1 transition hover:shadow-md duration-300 border-2 border-purple-700 hover:bg-purple-100 py-1 px-4 text-purple-700 font-medium rounded-lg text-xl">
-                        Voir les tutoriels
+                        Voir les formations
                     </button>
                 </div>
             </div>

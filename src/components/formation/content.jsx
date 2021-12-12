@@ -1,9 +1,11 @@
 import React from 'react'
+import { StartsRating } from '../tutoriels/content'
 
 export const Content = (props) => {
     const CONTENT = [
         {
             code: 'code1',
+            price: '15 000',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
             title: 'Redimensionnement en drag and drop',
@@ -14,6 +16,7 @@ export const Content = (props) => {
         },
         {
             code: 'code2',
+            price: '15 000',
             logo: '/images/php_logo.svg',
             level: 'Débutant',
             title: 'Communiquer avec une base de données sql',
@@ -24,6 +27,7 @@ export const Content = (props) => {
         },
         {
             code: 'code3',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -34,6 +38,7 @@ export const Content = (props) => {
         },
         {
             code: 'code4',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -44,6 +49,7 @@ export const Content = (props) => {
         },
         {
             code: 'code5',
+            price: '15 000',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
             title: 'Redimensionnement en drag and drop',
@@ -54,6 +60,7 @@ export const Content = (props) => {
         },
         {
             code: 'code6',
+            price: '15 000',
             logo: '/images/php_logo.svg',
             level: 'Débutant',
             title: 'Communiquer avec une base de données sql',
@@ -64,6 +71,7 @@ export const Content = (props) => {
         },
         {
             code: 'code7',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -74,6 +82,7 @@ export const Content = (props) => {
         },
         {
             code: 'code8',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -84,6 +93,7 @@ export const Content = (props) => {
         },
         {
             code: 'code9',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -94,6 +104,7 @@ export const Content = (props) => {
         },
         {
             code: 'code10',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -105,6 +116,7 @@ export const Content = (props) => {
 
         {
             code: 'code11',
+            price: '15 000',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
             title: 'Redimensionnement en drag and drop',
@@ -115,6 +127,7 @@ export const Content = (props) => {
         },
         {
             code: 'code12',
+            price: '15 000',
             logo: '/images/php_logo.svg',
             level: 'Débutant',
             title: 'Communiquer avec une base de données sql',
@@ -125,6 +138,7 @@ export const Content = (props) => {
         },
         {
             code: 'code13',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -135,6 +149,7 @@ export const Content = (props) => {
         },
         {
             code: 'code14',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -145,6 +160,7 @@ export const Content = (props) => {
         },
         {
             code: 'code15',
+            price: '15 000',
             logo: '/images/js_logo.svg',
             level: 'Amateur',
             title: 'Redimensionnement en drag and drop',
@@ -155,6 +171,7 @@ export const Content = (props) => {
         },
         {
             code: 'code16',
+            price: '15 000',
             logo: '/images/php_logo.svg',
             level: 'Débutant',
             title: 'Communiquer avec une base de données sql',
@@ -165,6 +182,7 @@ export const Content = (props) => {
         },
         {
             code: 'code17',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -175,6 +193,7 @@ export const Content = (props) => {
         },
         {
             code: 'code18',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -185,6 +204,7 @@ export const Content = (props) => {
         },
         {
             code: 'code19',
+            price: '15 000',
             logo: '/images/react_logo.svg',
             level: 'Expert',
             title: 'Gestion des states avec les contexts',
@@ -195,6 +215,7 @@ export const Content = (props) => {
         },
         {
             code: 'code20',
+            price: '15 000',
             logo: '/images/laravel_logo.svg',
             level: 'Amateur',
             title: 'Mise en place du principe de routing',
@@ -222,18 +243,20 @@ export const ContentItem = (props) => {
             <div className="formation-item" tabIndex="0">
                 <div className="f1"></div>
                 <div className="f2"></div>
-                <div className="f3 backdrop-filter backdrop-blur-sm transition duration-300 cursor-default bg-gray-100 border border-purple-500 border-opacity-25 hover:shadow rounded-md active:scale-100 space-y-2">
-                    <div className="flex justify-between items-center p-3">
-                        <div className="flex-none">
-                            <img className="w-12 h-12" src={item.logo} alt="item logo" />
-                        </div>
-                        <Badge
-                            color={item.level === 'Amateur' ? 'warning' : item.level === 'Expert' ? 'green' : ''}
-                            title={item.level}
-                        />
+                <div className="f3 backdrop-filter backdrop-blur-sm transition duration-300 cursor-default bg-gray-100 border border-purple-500 border-opacity-25 hover:shadow rounded-md active:scale-100">
+                    <div className="absolute p-3">
+                        <img className="w-12 h-12" src={item.logo} alt="item logo" />
+                    </div>
+                    <div className="w-full m-0 h-36 bg-gray-700 mb-2 rounded-t-md overflow-hidden">
+                        <img className="w-full h-full" src="/images/code_img.jpg" alt="Code" />
                     </div>
                     <div className="text-gray-700 font-bold text-lg px-3">{item.title}</div>
-                    <div className="text-gray-400 font-bold px-3">{item.description}</div>
+                    <div className="flex justify-between items-center px-3 py-2">
+                        <div className="text-purple-500 font-semibold">{item.price} XFA</div>
+                        <div>
+                            <StartsRating />
+                        </div>
+                    </div>
                     <div className="flex justify-between items-center text-sm px-3 py-1.5 bg-purple-400 bg-opacity-25 text-gray-500">
                         <div className="inline-flex items-center">
                             {item.parent ? (
