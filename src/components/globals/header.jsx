@@ -5,6 +5,8 @@ import { Lang } from '../../lang'
 import { Logo } from '../svg'
 
 export const AppHeader = (props) => {
+    const { color = 'default' } = props
+
     const { lang } = React.useContext(LangContext)
 
     const router = useRouter()
@@ -39,9 +41,9 @@ export const AppHeader = (props) => {
 
     return (
         <header
-            className={`w-full h-auto sticky top-0 z-20 bg-white opacity-95 transition duration-300 transform ${
-                !showHeader ? '-translate-y-40' : 'translate-y-0'
-            }`}
+            className={`w-full h-auto sticky top-0 z-20 bg-white ${
+                color === 'default' ? 'bg-opacity-80' : 'bg-opacity-10'
+            } transition duration-300 transform ${!showHeader ? '-translate-y-40' : 'translate-y-0'}`}
         >
             <nav className="flex container transition mx-auto pt-4 pb-2 px-7 item-center justify-between border-b-2 z-0">
                 <div className="flex flex-row">
@@ -50,6 +52,7 @@ export const AppHeader = (props) => {
                     </div>
                     <div className="flex">
                         <NavItem
+                            color={color}
                             className="hidden sm:flex"
                             active={active === '/tutoriels'}
                             onClick={() => router.push('/tutoriels')}
@@ -80,6 +83,7 @@ export const AppHeader = (props) => {
                         </NavItem>
 
                         <NavItem
+                            color={color}
                             className="hidden sm:flex"
                             active={active === '/cursus'}
                             onClick={() => router.push('/cursus')}
@@ -102,6 +106,7 @@ export const AppHeader = (props) => {
                         </NavItem>
 
                         <NavItem
+                            color={color}
                             className="hidden md:flex"
                             active={active === '/formations'}
                             onClick={() => router.push('/formations')}
@@ -130,6 +135,7 @@ export const AppHeader = (props) => {
                         </NavItem>
 
                         <NavItem
+                            color={color}
                             className="hidden lg:flex"
                             active={active === '/abonner'}
                             onClick={() => router.push('/abonner')}
@@ -153,6 +159,7 @@ export const AppHeader = (props) => {
                         </NavItem>
 
                         <NavItem
+                            color={color}
                             className="hidden lg:flex"
                             active={active === '/forum'}
                             onClick={() => router.push('/forum')}
@@ -186,7 +193,13 @@ export const AppHeader = (props) => {
                     </div>
                 </div>
                 <div className="flex flex-row items-center">
-                    <button className="w-10 h-10 flex lg:hidden items-center justify-center  text-gray-500 hover:text-purple-700 rounded-full transition">
+                    <button
+                        className={`w-10 h-10 flex lg:hidden items-center justify-center  ${
+                            color === 'default'
+                                ? `text-gray-500 hover:text-purple-700`
+                                : `text-gray-400 hover:text-white`
+                        } rounded-full transition`}
+                    >
                         <svg
                             onClick={() => setShow(true)}
                             width="24"
@@ -212,7 +225,11 @@ export const AppHeader = (props) => {
 
                     <button
                         type="button"
-                        className={`w-10 h-10 hidden mr-0.5 lg:flex justify-center items-center text-gray-500 transition rounded-full hover:text-purple-700`}
+                        className={`w-10 h-10 hidden mr-0.5 lg:flex justify-center items-center transition rounded-full ${
+                            color === 'default'
+                                ? `text-gray-500 hover:text-purple-700`
+                                : `text-gray-400 hover:text-white`
+                        }`}
                     >
                         <svg width="32" height="32" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -225,7 +242,11 @@ export const AppHeader = (props) => {
                     <div className="hidden lg:flex items-center justify-center border-l-2">
                         <button
                             onClick={() => router.push('/login')}
-                            className={`pl-5 pr-1 flex justify-between items-center transition text-gray-600 hover:text-purple-700`}
+                            className={`pl-5 pr-1 flex justify-between items-center transition ${
+                                color === 'default'
+                                    ? `text-gray-500 hover:text-purple-700`
+                                    : `text-gray-400 hover:text-white`
+                            }`}
                         >
                             <svg
                                 width="21"
@@ -243,7 +264,7 @@ export const AppHeader = (props) => {
                             <span className="pl-2 whitespace-nowrap font-semibold">{Lang.login[lang]}</span>
                         </button>
                         <svg
-                            className="text-gray-500"
+                            className={`${color === 'default' ? 'text-gray-500' : 'text-gray-400'}`}
                             width="10"
                             height="10"
                             viewBox="0 0 10 10"
@@ -257,7 +278,11 @@ export const AppHeader = (props) => {
                         </svg>
                         <button
                             onClick={() => router.push('/login?subscribe=true')}
-                            className={`pl-1 flex justify-between items-center transition text-gray-600 hover:text-purple-700 font-semibold`}
+                            className={`pl-1 flex justify-between items-center transition ${
+                                color === 'default'
+                                    ? `text-gray-500 hover:text-purple-700`
+                                    : `text-gray-400 hover:text-white`
+                            } font-semibold`}
                         >
                             {Lang.sign_in[lang]}
                         </button>
@@ -384,6 +409,7 @@ export const AppHeader = (props) => {
                         </NavItem>
 
                         <NavItem
+                            color="default"
                             className="flex"
                             active={active === '/formations'}
                             onClick={() => router.push('/formations')}
@@ -473,14 +499,21 @@ export const AppHeader = (props) => {
 }
 
 export const NavItem = (props) => {
-    const { title, onClick, active = false, className = '' } = props
+    const { color = 'default', title, onClick, active = false, className = '' } = props
+    const classes = React.useMemo(() => {
+        if (color === 'default') {
+            if (active) return 'text-purple-700'
+            return 'text-gray-500 hover:text-purple-700'
+        } else {
+            if (active) return 'text-white'
+            return 'text-gray-400 hover:text-white'
+        }
+    }, [color, active])
     return (
         <button
             onClick={onClick}
             type="button"
-            className={`xl:pl-10 pl-5 justify-between items-center transition ${
-                active ? 'text-purple-700' : 'text-gray-600'
-            } hover:text-purple-700 ${className} font-semibold`}
+            className={`xl:pl-10 pl-5 justify-between items-center transition ${classes}                                                                                                                                                                                                                                                                                                                                                                 ${className} font-semibold`}
         >
             <div className="pr-1">{props.children}</div>
             <div className="t-16">{title}</div>

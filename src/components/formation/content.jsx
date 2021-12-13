@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { StartsRating } from '../tutoriels/content'
 
@@ -238,9 +239,18 @@ export const Content = (props) => {
 
 export const ContentItem = (props) => {
     const { item } = props
+    const router = useRouter()
+    const hanldeKeyPress = (e) => {
+        if (e.key === 'Enter') router.push('/formations/' + item.code)
+    }
     return (
         <div>
-            <div className="formation-item" tabIndex="0">
+            <div
+                className="formation-item"
+                tabIndex="0"
+                onKeyPress={hanldeKeyPress}
+                onClick={() => router.push(`/formations/${item.code}`)}
+            >
                 <div className="f1"></div>
                 <div className="f2"></div>
                 <div className="f3 backdrop-filter backdrop-blur-sm transition duration-300 cursor-default bg-gray-100 border border-purple-500 border-opacity-25 hover:shadow rounded-md active:scale-100">
