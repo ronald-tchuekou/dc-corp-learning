@@ -3,6 +3,8 @@ import React from 'react'
 import { AppFooter, AppHead, AppHeader } from '../../src/components'
 import { LangContext } from '../../src/contexts'
 import { Lang } from '../../src/lang'
+import { useLang } from '../../src/hooks'
+import { ENV } from '../../src/enviroments/env'
 
 export default function Formations() {
     const [lang, setLang] = React.useState('fr')
@@ -21,6 +23,7 @@ export default function Formations() {
     )
 
     React.useEffect(() => {
+        setLang(localStorage.getItem(ENV.SESSION_KEYS.lang) || 'fr')
         document.body.scrollTop = 0
         console.log(code)
         document.body.style.backgroundImage = 'url(/images/banner_bg_img.jpg)'

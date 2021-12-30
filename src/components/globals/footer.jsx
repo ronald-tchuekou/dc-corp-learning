@@ -1,17 +1,67 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import { Lang } from '../../lang'
+import { ENV } from '../../../src/enviroments/env'
+import { OnOutsideClickListener } from '../../../src/scripts'
 import { LangContext } from '../../contexts'
 
 export const AppFooter = (props) => {
-    const { lang } = React.useContext(LangContext)
+    const { lang, setLang } = React.useContext(LangContext)
+
+    const lang_menu_ref = React.useRef(null)
+
+    const [showLang, toggleShowLang] = React.useState(false)
+
+    React.useEffect(() => {
+        OnOutsideClickListener(lang_menu_ref.current, () => toggleShowLang(false))
+    }, [])
+
     const router = useRouter()
+
+    function langMenuClick(value) {
+        localStorage.setItem(ENV.SESSION_KEYS.lang, value)
+        setLang(value)
+        toggleShowLang(false)
+    }
+
     return (
         <footer className="bg-gray-200 w-full h-auto border-t-2">
             <div className="flex container pt-10 px-7 mx-auto justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <div className="flex-1">
-                    <div className="text-gray-700 text-xl font-semibold mb-5">Localisations</div>
+                    <div className="text-gray-700 text-xl font-semibold mb-5">{Lang.locations[lang]}</div>
                     <div className="text-gray-500 text-ld">
-                        Bureau pricipale: <span className="font-medium">Akwa, près de la salle des fêtes.</span>
+                        {Lang.principal_office[lang]}:{' '}
+                        <span className="font-semibold">Akwa, {Lang.around_festival_room[lang]}.</span>
+                    </div>
+                    <div className="relative flex items-center py-2 flow-row text-gray-500 text-base">
+                        <button
+                            onClick={() => toggleShowLang((s) => !s)}
+                            className="transition bg-white rounded-md shadow-sm px-4 py-2 hover:bg-gray-100"
+                        >
+                            <span>{Lang.language[lang]}:</span>&nbsp;
+                            <span className="font-semibold">
+                                {ENV.LANGUAGES.find((l) => l.value === lang).label[lang]}
+                            </span>
+                        </button>
+
+                        <div
+                            ref={lang_menu_ref}
+                            className={`transition absolute top-2 left-0 flex flex-col space-y-1 bg-white rounded-md shadow-md overflow-hidden ${
+                                showLang ? '' : 'hidden'
+                            }`}
+                        >
+                            {ENV.LANGUAGES.map((lang_item) => (
+                                <button
+                                    className={`transition w-24 px-3 py-2 hover:text-purple-500 hover:bg-purple-500 hover:bg-opacity-20 ${
+                                        lang_item.value === lang ? 'text-purple-500' : ''
+                                    }`}
+                                    key={lang_item.value}
+                                    onClick={() => langMenuClick(lang_item.value)}
+                                >
+                                    {lang_item.label[lang]}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className="flex-1">
@@ -42,7 +92,7 @@ export const AppFooter = (props) => {
                         onClick={() => router.push('/abonner')}
                         className="block transition duration-300 text-gray-500 text-lg hover:text-purple-700"
                     >
-                        Abonnements
+                        {Lang.subscritions[lang]}
                     </a>
                     <a
                         href="#"
@@ -53,7 +103,7 @@ export const AppFooter = (props) => {
                     </a>
                 </div>
                 <div className="flex-1">
-                    <div className="text-gray-700 text-xl font-semibold mb-5">Résaux socials</div>
+                    <div className="text-gray-700 text-xl font-semibold mb-5">{Lang.social_networks[lang]}</div>
                     <div className="flex flex-row space-x-4">
                         <a
                             href="wwww.facebook.com"
@@ -147,7 +197,7 @@ export const AppFooter = (props) => {
                 </div>
             </div>
             <div className="flex container py-5 px-7 mx-auto justify-center items-center">
-                <div className="text-gray-400">&copy; Copyright 2021, dc-corp, tous les droits réservés.</div>
+                <div className="text-gray-400">&copy; {Lang.copyright[lang]}</div>
             </div>
         </footer>
     )
