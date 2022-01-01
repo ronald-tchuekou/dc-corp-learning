@@ -6,6 +6,18 @@ import { Saly17 as LoginSaly2 } from './saly_17'
 import { TBanner as TutoBannerImage } from './t-banner'
 import { FBanner as FormationBannerImage } from './f-banner'
 import { Play } from './paly'
+import { Pause } from './pause'
 import { Bool2 } from './bool2'
 
-export { Logo, HomeBannerImage, HomeSaly, TutoBannerImage, FormationBannerImage, LoginSaly1, LoginSaly2, Play, Bool2 }
+export {
+    Logo,
+    HomeBannerImage,
+    HomeSaly,
+    TutoBannerImage,
+    FormationBannerImage,
+    LoginSaly1,
+    LoginSaly2,
+    Play,
+    Pause,
+    Bool2,
+}

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { Play } from '../svg'
+import { Pause, Play } from '../svg'
 
 export const ChapterContent = ({ title, contents }) => {
     return (
@@ -13,15 +13,15 @@ export const ChapterContent = ({ title, contents }) => {
     )
 }
 
-export const ChapterContentItem = ({ item }) => {
+export const ChapterContentItem = ({ item, is_current = false }) => {
     const router = useRouter()
     return (
         <div
-            onClick={() => router.push(`/formations/detail/${item.title}`)}
+            onClick={() => router.push(`/formations/detail/${item.code}`)}
             className="cursor-pointer transition flex flex-row space-x-4 border items-center border-purple-500 border-opacity-25 rounded-md px-3 py-2 hover:border-opacity-80"
         >
             <div className="text-purple-500">
-                <Play className="w-8 h-8" />
+                {is_current ? <Pause className="text-yellow-500 w-8 h-8" /> : <Play className="w-8 h-8" />}
             </div>
             <span className="text-base md:text-xl text-gray-600 w-full" style={{ lineHeight: '1.2rem' }}>
                 {item.title}

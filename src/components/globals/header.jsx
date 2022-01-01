@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { LangContext } from '../../contexts'
+import { CurrentPathContext, LangContext } from '../../contexts'
 import { Lang } from '../../lang'
 import { Logo } from '../svg'
 
@@ -8,6 +8,7 @@ export const AppHeader = (props) => {
     const { color = 'default' } = props
 
     const { lang } = React.useContext(LangContext)
+    const { setPath } = React.useContext(CurrentPathContext)
 
     const router = useRouter()
 
@@ -19,6 +20,7 @@ export const AppHeader = (props) => {
         let split_path = window.location.pathname.split('/')
         const path = split_path[1] || ''
         setActive('/' + path)
+        setPath(window.location.pathname)
         let lastScrollTop = 0
         document.body.addEventListener('scroll', () => {
             const scrollTop = document.body.scrollTop

@@ -14,6 +14,8 @@ import { Content as FormationContent } from './formation/content'
 import { Login as LoginContent } from './login'
 import { Chapter } from './formation/chapter'
 import { Description } from './formation/description'
+import { Chapter as FormationDetailChapter } from './formation/detail/chapters'
+import { Banner as FormationDetailBanner } from './formation/detail/banner'
 
 export {
     AppHead,
@@ -32,4 +34,6 @@ export {
     Container,
     Chapter,
     Description,
+    FormationDetailChapter,
+    FormationDetailBanner,
 }
