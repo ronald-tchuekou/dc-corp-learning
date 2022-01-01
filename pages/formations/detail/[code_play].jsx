@@ -1,18 +1,17 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { AppFooter, AppHead, AppHeader, Chapter, Container, Description } from '../../src/components'
-import { LangContext } from '../../src/contexts'
-import { Lang } from '../../src/lang'
-import { ENV } from '../../src/enviroments/env'
-import { Bool2, Play } from '../../src/components/svg'
+import { AppFooter, AppHead, AppHeader, Chapter, Container, Description } from '../../../src/components'
+import { LangContext } from '../../../src/contexts'
+import { Lang } from '../../../src/lang'
+import { ENV } from '../../../src/enviroments/env'
+import { Bool2, Play } from '../../../src/components/svg'
 
 export default function Formations() {
     const [lang, setLang] = React.useState('fr')
 
     const router = useRouter()
-    const { code } = router.query
+    const { code_play } = router.query
 
-    const [header_color, setHeaderColor] = React.useState('white')
     const [current_part, setPart] = React.useState(1)
 
     const lang_context = React.useMemo(
@@ -26,37 +25,36 @@ export default function Formations() {
     React.useEffect(() => {
         setLang(localStorage.getItem(ENV.SESSION_KEYS.lang) || 'fr')
         document.body.scrollTop = 0
-        console.log(code)
-        document.body.addEventListener('scroll', handleScroll)
-        return () => {
-            document.body.removeEventListener('scroll', handleScroll)
-        }
-    }, [code])
-
-    function handleScroll() {
-        if (document.body.scrollTop + 100 > 880) setHeaderColor('default')
-        else setHeaderColor('white')
-    }
+        console.log(code_play)
+        return () => {}
+    }, [code_play])
 
     return (
         <LangContext.Provider value={lang_context}>
-            <main
-                className="w-full bg-no-repeat bg-cover"
-                style={{
-                    backgroundImage: 'url(/images/banner_bg_img.jpg)',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'top center',
-                    backgroundSize: '100% 800px',
-                }}
-            >
-                <AppHead title={Lang.formations[lang]} />
-                <AppHeader color={header_color} />
-                <Banner />
+            <AppHead title={Lang.formations[lang]} />
+            <AppHeader />
+            <main>
                 <Container>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <CardInfo contents={['14h48 de vidéos', '29 Chapitres']} label={'Information'} />
-                        <CardInfo contents={['Documentation', 'Challenges pour s’entrainer']} label={'Liens utils'} />
-                        <CardInfo contents={['Editeur de code', 'HTML/CSS']} label={'Prérequis'} />
+                    <div className="grid grid-cols-1 lg:grid-cols-10 gap-7 w-full">
+                        <div className="lg:col-span-6">
+                            <div className="text-black text-5xl py-4 font-bold overflow-ellipsis whitespace-nowrap overflow-hidden">
+                                {code_play}
+                            </div>
+                            <iframe
+                                className="w-full h-52 lg:h-96"
+                                src="https://www.youtube.com/embed/No9WERxXjy4"
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                        <div className="hidden lg:block lg:col-span-4 lg:col-start-7 pt-5">
+                            <div className="text-yellow-500 text-xl py-4 font-semibold">Apprendre le JavaScrip</div>
+                            <div className="overflow-y-auto border h-96">
+                                <Chapter hiddenTitle />
+                            </div>
+                        </div>
                     </div>
                 </Container>
 
@@ -126,24 +124,11 @@ export default function Formations() {
                     </div>
                 </div>
 
-                <div className="hidden lg:block">
-                    <Container>
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                            <div className="col-span-5 col-start-1">
-                                <Chapter />
-                            </div>
-                            <div className="col-span-7 col-start-6">
-                                <Description />
-                            </div>
-                        </div>
-                    </Container>
-                </div>
-
                 <br />
                 <br />
                 <br />
-                <AppFooter />
             </main>
+            <AppFooter />
         </LangContext.Provider>
     )
 }

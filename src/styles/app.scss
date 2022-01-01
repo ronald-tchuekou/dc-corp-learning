@@ -13,6 +13,27 @@ body {
     scroll-behavior: smooth;
 }
 
+* {
+    scrollbar-width: 8px;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: rgb(236, 236, 236);
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.3);
+        transition: 0.3s;
+    }
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(156, 113, 255, 0.7);
+    }
+}
+
 .section-container {
     .section-cainter-header {
         box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.25), inset 4px 4px 10px #ebebeb;

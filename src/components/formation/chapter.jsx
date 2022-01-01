@@ -3,7 +3,7 @@ import { LangContext } from '../../contexts'
 import { Lang } from '../../lang'
 import { ChapterContent } from './chapter-content'
 
-export const Chapter = () => {
+export const Chapter = ({ hiddenTitle = false }) => {
     const contents = [
         {
             title: 'Sauter les base',
@@ -80,7 +80,7 @@ export const Chapter = () => {
     const { lang } = React.useContext(LangContext)
     return (
         <div className="space-y-6">
-            <div className="text-3xl text-purple-500 lg:text-white">{Lang.chapters[lang]}</div>
+            {!hiddenTitle ? <div className="text-3xl text-purple-500 lg:text-white">{Lang.chapters[lang]}</div> : ''}
             {contents.map((item, i) => (
                 <ChapterContent key={i} title={item.title} contents={item.contents} />
             ))}

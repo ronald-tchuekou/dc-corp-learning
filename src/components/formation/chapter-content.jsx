@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { Play } from '../svg'
 
@@ -13,10 +14,11 @@ export const ChapterContent = ({ title, contents }) => {
 }
 
 export const ChapterContentItem = ({ item }) => {
+    const router = useRouter()
     return (
-        <a
-            href="#"
-            className="transition flex flex-row space-x-4 border items-center border-purple-500 border-opacity-25 rounded-md px-3 py-2 hover:border-opacity-80"
+        <div
+            onClick={() => router.push(`/formations/detail/${item.title}`)}
+            className="cursor-pointer transition flex flex-row space-x-4 border items-center border-purple-500 border-opacity-25 rounded-md px-3 py-2 hover:border-opacity-80"
         >
             <div className="text-purple-500">
                 <Play className="w-8 h-8" />
@@ -33,6 +35,6 @@ export const ChapterContentItem = ({ item }) => {
                 </svg>
                 <span>{item.time}</span>
             </div>
-        </a>
+        </div>
     )
 }
