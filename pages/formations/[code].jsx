@@ -53,7 +53,7 @@ export default function Formations() {
                 <AppHeader color={header_color} />
                 <Banner />
                 <Container>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-7">
                         <CardInfo contents={['14h48 de vidéos', '29 Chapitres']} label={'Information'} />
                         <CardInfo contents={['Documentation', 'Challenges pour s’entrainer']} label={'Liens utils'} />
                         <CardInfo contents={['Editeur de code', 'HTML/CSS']} label={'Prérequis'} />
