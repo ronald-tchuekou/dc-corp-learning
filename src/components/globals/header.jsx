@@ -43,11 +43,11 @@ export const AppHeader = (props) => {
 
     return (
         <header
-            className={`w-full h-auto sticky top-0 z-20 bg-white ${
+            className={`w-full h-auto border-b-2 sticky top-0 z-20 bg-white ${
                 color === 'default' ? 'bg-opacity-80' : 'bg-opacity-10'
             } transition duration-300 transform ${!showHeader ? '-translate-y-40' : 'translate-y-0'}`}
         >
-            <nav className="flex container transition mx-auto pt-4 pb-2 px-7 item-center justify-between border-b-2 z-0">
+            <nav className="flex container transition mx-auto pt-4 pb-2 px-7 item-center justify-between z-0">
                 <div className="flex flex-row">
                     <div className="flex-none w-10 md:w-12 cursor-pointer" onClick={() => router.push('/')}>
                         <Logo />

@@ -22,42 +22,44 @@ export const Section1 = () => {
     const { lang } = React.useContext(LangContext)
     return (
         <div className="w-full h-auto pb-10 relative">
-            <div className="bg-purple-100 bg-opacity-30 absolute top-0 left-0 w-full h-5/6"></div>
-            <div className="flex container pt-10 px-7 mx-auto flex-col justify-center items-center lg:flex-row lg:space-x-10">
-                <div className="lg:flex-1 py-5">
-                    <div className="text-4xl md:text-5xl text-center lg:text-left lg:text-6xl text-black font-bold">
-                        {Lang.learn_at_many[lang]}
-                        <span className="text-purple-700"> {Lang.training_modules[lang]}.</span>
+            <div className="bg-purple-200 bg-opacity-80 absolute top-0 left-0 w-full h-5/6"></div>
+            <div className="">
+                <div className="flex container pt-10 px-7 mx-auto flex-col justify-center items-center lg:flex-row lg:space-x-10">
+                    <div className="lg:flex-1 py-5 z-10">
+                        <div className="text-4xl md:text-5xl text-center lg:text-left lg:text-6xl text-black font-bold">
+                            {Lang.learn_at_many[lang]}
+                            <span className="text-purple-700"> {Lang.training_modules[lang]}.</span>
+                        </div>
+                        <p className="text-gray-500 text-2xl my-4 text-center lg:text-left">
+                            {Lang.home_section1_text[lang]}
+                        </p>
                     </div>
-                    <p className="text-gray-500 text-2xl my-4 text-center lg:text-left">
-                        {Lang.home_section1_text[lang]}
-                    </p>
+                    <div className="w-full lg:flex-1 lg:pr-14">
+                        <SectionContainer
+                            url="/formations"
+                            content={FORMATIONS}
+                            title={Lang.see_all_formations[lang]}
+                            headerTop
+                        />
+                    </div>
                 </div>
-                <div className="w-full lg:flex-1 lg:pr-14">
-                    <SectionContainer
-                        url="/formations"
-                        content={FORMATIONS}
-                        title={Lang.see_all_formations[lang]}
-                        headerTop
-                    />
-                </div>
-            </div>
-            <div className="flex container px-7 mx-auto flex-col justify-center items-center lg:flex-row lg:space-x-10">
-                <div className="w-full lg:flex-none lg:w-3/5 lg:pl-40">
-                    <SectionContainer
-                        url="/tutoriels"
-                        content={TUTORIELS}
-                        title={Lang.see_all_tutoriels[lang]}
-                        color="red"
-                    />
-                </div>
-                <div className="w-full lg:flex-none lg:w-4/12">
-                    <SectionContainer
-                        url="/forum"
-                        content={POSTS}
-                        title={Lang.see_all_latest_posts[lang]}
-                        color="blue"
-                    />
+                <div className="flex container px-7 mx-auto flex-col justify-center items-center lg:flex-row lg:space-x-10">
+                    <div className="w-full lg:flex-none lg:w-3/5 lg:pl-40">
+                        <SectionContainer
+                            url="/tutoriels"
+                            content={TUTORIELS}
+                            title={Lang.see_all_tutoriels[lang]}
+                            color="red"
+                        />
+                    </div>
+                    <div className="w-full lg:flex-none lg:w-4/12">
+                        <SectionContainer
+                            url="/forum"
+                            content={POSTS}
+                            title={Lang.see_all_latest_posts[lang]}
+                            color="blue"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ import { Chapter } from './formation/chapter'
 import { Description } from './formation/description'
 import { Chapter as FormationDetailChapter } from './formation/detail/chapters'
 import { Banner as FormationDetailBanner } from './formation/detail/banner'
+import { TabGroup, TabHeader, TabHeaderItem, TabContent, TabContentItem } from './globals/tab'
 
 export {
     AppHead,
@@ -36,4 +37,9 @@ export {
     Description,
     FormationDetailChapter,
     FormationDetailBanner,
+    TabGroup,
+    TabHeader,
+    TabHeaderItem,
+    TabContent,
+    TabContentItem,
 }

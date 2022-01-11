@@ -163,4 +163,32 @@ export const Lang = {
         fr: 'Présentation',
         en: 'Presentation',
     },
+    enter_your_comment: {
+        fr: 'Veuillez entrer votre commentaire',
+        en: 'Enter your comment about this',
+    },
+    username: {
+        fr: "Nom d'utilisateur",
+        en: 'Username',
+    },
+    comment_content: {
+        fr: 'Contenu du commmentaire',
+        en: 'Comment content',
+    },
+    what_i_have_to_say: {
+        fr: "Ce que j'ai à dire...",
+        en: 'What i have to say...',
+    },
+    send: {
+        fr: 'Envoyer',
+        en: 'Send',
+    },
+    comments: {
+        fr: 'Commentaires',
+        en: 'Comments',
+    },
+    about_this_cours: {
+        fr: 'A propos de ce cours',
+        en: 'About this course',
+    },
 }

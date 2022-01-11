@@ -4,9 +4,15 @@ import {
     AppFooter,
     AppHead,
     AppHeader,
+    Container,
     Description,
     FormationDetailBanner,
     FormationDetailChapter,
+    TabContent,
+    TabContentItem,
+    TabGroup,
+    TabHeader,
+    TabHeaderItem,
 } from '../../../src/components'
 import { ChaptersContext, CurrentPathContext, LangContext } from '../../../src/contexts'
 import { Lang } from '../../../src/lang'
@@ -17,7 +23,7 @@ export default function Detail() {
     const router = useRouter()
     const { code_play } = router.query
 
-    const [current_part, setPart] = React.useState(1)
+    const [index, setIndex] = React.useState(0)
     const [lang, setLang] = React.useState('fr')
     const [path, setPath] = React.useState('')
     const [chapters, setChapters] = React.useState([])
@@ -66,13 +72,12 @@ export default function Detail() {
                     <AppHeader />
                     <main>
                         <FormationDetailBanner code_play={code_play} />
-
-                        <div className="flex mt-10 flex-row border-b bg-white lg:hidden">
-                            <button onClick={() => setPart(1)} className="flex-1">
-                                <div
-                                    className={` transition flex flex-row justify-center items-center ${
-                                        current_part === 1 ? 'text-green-400' : 'text-gray-500'
-                                    } text-xl px-5 py-3`}
+                        <TabGroup className={'lg:hidden'}>
+                            <TabHeader>
+                                <TabHeaderItem
+                                    selected={index === 0}
+                                    onCLick={() => setIndex(0)}
+                                    label={Lang.chapters[lang]}
                                 >
                                     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                                         <path
@@ -80,23 +85,11 @@ export default function Detail() {
                                             fill="currentColor"
                                         />
                                     </svg>
-                                    &nbsp;
-                                    <span className="overflow-ellipsis overflow-hidden whitespace-nowrap">
-                                        {Lang.chapters[lang]}
-                                    </span>
-                                </div>
-                                <div
-                                    className={` transition h-1 rounded-lg ${
-                                        current_part === 1 ? 'bg-green-400' : 'bg-opacity-0'
-                                    } mx-5`}
-                                ></div>
-                            </button>
-
-                            <button onClick={() => setPart(2)} className="flex-1">
-                                <div
-                                    className={` transition flex flex-row justify-center items-center ${
-                                        current_part === 2 ? 'text-green-400' : 'text-gray-500'
-                                    } text-xl px-5 py-3`}
+                                </TabHeaderItem>
+                                <TabHeaderItem
+                                    selected={index === 1}
+                                    onCLick={() => setIndex(1)}
+                                    label={Lang.presentation[lang]}
                                 >
                                     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                                         <path
@@ -114,36 +107,84 @@ export default function Detail() {
                                             strokeLinejoin="round"
                                         />
                                     </svg>
-                                    &nbsp;
-                                    <span className="overflow-ellipsis overflow-hidden whitespace-nowrap">
-                                        {Lang.presentation[lang]}
-                                    </span>
-                                </div>
-                                <div
-                                    className={` transition h-1 rounded-lg ${
-                                        current_part === 2 ? 'bg-green-400' : 'bg-opacity-0'
-                                    } mx-5`}
-                                ></div>
-                            </button>
-                        </div>
-
-                        <div className="lg:hidden bg-white">
-                            <div className={`p-3 ${current_part === 1 ? '' : 'hidden'}`}>
-                                <FormationDetailChapter />
-                            </div>
-                            <div className={`p-3 ${current_part === 2 ? '' : 'hidden'}`}>
-                                <Description />
-                            </div>
-                            <br />
-                            <br />
-                            <br />
-                        </div>
-
-                        <div className="h-96"></div>
+                                </TabHeaderItem>
+                            </TabHeader>
+                            <TabContent>
+                                <TabContentItem selected={index === 0}>
+                                    <FormationDetailChapter />
+                                </TabContentItem>
+                                <TabContentItem selected={index === 1}>
+                                    <ContentDetail is_phone />
+                                </TabContentItem>
+                            </TabContent>
+                        </TabGroup>
+                        <ContentDetail className="hidden lg:block" withBorder />
                     </main>
                     <AppFooter />
                 </ChaptersContext.Provider>
             </CurrentPathContext.Provider>
         </LangContext.Provider>
+    )
+}
+
+const ContentDetail = ({ withBorder = false, is_phone = false, className = '' }) => {
+    return (
+        <div className={`bg-white mt-10 w-full ${className} ${withBorder ? 'border-t border-purple-300' : ''}`}>
+            <Container is_phone={is_phone}>
+                <div className="grid grid-cols-12 gap-7 w-full">
+                    <div className="col-span-12 lg:col-span-8">
+                        <Details />
+                        <Comments />
+                    </div>
+                    <div className="col-span-12 lg:col-start-9 lg:col-span-4 bg-yellow-500 h-52"></div>
+                </div>
+            </Container>
+        </div>
+    )
+}
+
+const Details = ({}) => {
+    const { lang } = React.useContext(LangContext)
+    return (
+        <div className="mb-1">
+            <div className="text-3xl lg:text-5xl text-black font-semibold">{Lang.about_this_cours[lang]}</div>
+        </div>
+    )
+}
+
+const Comments = ({}) => {
+    const { lang } = React.useContext(LangContext)
+    return (
+        <div>
+            <div className="text-gray-800 text-2xl lg:text-4xl py-2 font-semibold">2 {Lang.comments[lang]}</div>
+            <CommentsForm />
+        </div>
+    )
+}
+
+const CommentsForm = ({}) => {
+    const { lang } = React.useContext(LangContext)
+    return (
+        <div className="mb-5 py-4 border-t border-purple-500">
+            <div className="lg:text-base text-blue-700">{Lang.enter_your_comment[lang]}</div>
+            <div className="w-full mt-1 text-lg lg:w-1/2">
+                <div className="pl-1 pt-2 text-gray-500">{Lang.username[lang]}</div>
+                <input
+                    type="text"
+                    className="px-3 mt-1 py-2 w-full rounded-md border border-purple-400 bg-gray-100"
+                    placeholder={Lang.username[lang]}
+                />
+            </div>
+            <div className="w-full mt-1 text-lg">
+                <div className="pl-1 pt-2 text-gray-500">{Lang.comment_content[lang]}</div>
+                <textarea
+                    type="text"
+                    rows={4}
+                    className="px-3 mt-1 py-2 w-full rounded-md border border-purple-400 bg-gray-100"
+                    placeholder={Lang.what_i_have_to_say[lang]}
+                ></textarea>
+            </div>
+            <button className="mt-4 bg-purple-700 text-white text-base px-6 py-2 rounded-md">{Lang.send[lang]}</button>
+        </div>
     )
 }

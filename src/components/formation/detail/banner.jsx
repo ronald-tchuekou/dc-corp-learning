@@ -39,7 +39,7 @@ export const Banner = ({ code_play }) => {
                 </div>
                 <div className="hidden lg:block lg:col-span-4 lg:col-start-7 pt-5">
                     <div className="text-yellow-500 text-xl py-4 font-semibold">Apprendre le JavaScrip</div>
-                    <div className="overflow-y-auto border rounded-md h-96">
+                    <div className="overflow-y-auto border border-purple-500 bg-white bg-opacity-60 rounded-md h-96">
                         <FormationDetailChapter />
                     </div>
                 </div>
