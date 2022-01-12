@@ -191,4 +191,20 @@ export const Lang = {
         fr: 'A propos de ce cours',
         en: 'About this course',
     },
+    publish_at: {
+        fr: 'Publié le ',
+        en: 'Publish at ',
+    },
+    users_techno: {
+        fr: 'Technologies utilisées',
+        en: 'Uses techonologies',
+    },
+    author: {
+        fr: 'Auteur',
+        en: 'Author',
+    },
+    reply: {
+        fr: 'Répondre',
+        en: 'Reply',
+    },
 }

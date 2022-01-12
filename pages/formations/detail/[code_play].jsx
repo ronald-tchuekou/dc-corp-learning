@@ -4,10 +4,12 @@ import {
     AppFooter,
     AppHead,
     AppHeader,
+    Comments,
     Container,
-    Description,
     FormationDetailBanner,
     FormationDetailChapter,
+    PlayCourseDetails,
+    PlayCourseTeacher,
     TabContent,
     TabContentItem,
     TabGroup,
@@ -133,58 +135,14 @@ const ContentDetail = ({ withBorder = false, is_phone = false, className = '' })
             <Container is_phone={is_phone}>
                 <div className="grid grid-cols-12 gap-7 w-full">
                     <div className="col-span-12 lg:col-span-8">
-                        <Details />
+                        <PlayCourseDetails />
                         <Comments />
                     </div>
-                    <div className="col-span-12 lg:col-start-9 lg:col-span-4 bg-yellow-500 h-52"></div>
+                    <div className="col-span-12 lg:col-start-9 lg:col-span-4">
+                        <PlayCourseTeacher />
+                    </div>
                 </div>
             </Container>
-        </div>
-    )
-}
-
-const Details = ({}) => {
-    const { lang } = React.useContext(LangContext)
-    return (
-        <div className="mb-1">
-            <div className="text-3xl lg:text-5xl text-black font-semibold">{Lang.about_this_cours[lang]}</div>
-        </div>
-    )
-}
-
-const Comments = ({}) => {
-    const { lang } = React.useContext(LangContext)
-    return (
-        <div>
-            <div className="text-gray-800 text-2xl lg:text-4xl py-2 font-semibold">2 {Lang.comments[lang]}</div>
-            <CommentsForm />
-        </div>
-    )
-}
-
-const CommentsForm = ({}) => {
-    const { lang } = React.useContext(LangContext)
-    return (
-        <div className="mb-5 py-4 border-t border-purple-500">
-            <div className="lg:text-base text-blue-700">{Lang.enter_your_comment[lang]}</div>
-            <div className="w-full mt-1 text-lg lg:w-1/2">
-                <div className="pl-1 pt-2 text-gray-500">{Lang.username[lang]}</div>
-                <input
-                    type="text"
-                    className="px-3 mt-1 py-2 w-full rounded-md border border-purple-400 bg-gray-100"
-                    placeholder={Lang.username[lang]}
-                />
-            </div>
-            <div className="w-full mt-1 text-lg">
-                <div className="pl-1 pt-2 text-gray-500">{Lang.comment_content[lang]}</div>
-                <textarea
-                    type="text"
-                    rows={4}
-                    className="px-3 mt-1 py-2 w-full rounded-md border border-purple-400 bg-gray-100"
-                    placeholder={Lang.what_i_have_to_say[lang]}
-                ></textarea>
-            </div>
-            <button className="mt-4 bg-purple-700 text-white text-base px-6 py-2 rounded-md">{Lang.send[lang]}</button>
         </div>
     )
 }

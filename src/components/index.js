@@ -17,6 +17,10 @@ import { Description } from './formation/description'
 import { Chapter as FormationDetailChapter } from './formation/detail/chapters'
 import { Banner as FormationDetailBanner } from './formation/detail/banner'
 import { TabGroup, TabHeader, TabHeaderItem, TabContent, TabContentItem } from './globals/tab'
+import { Comments, CommentsForm } from './globals/comments'
+import { PlayCourseDetails } from './formation/detail/detail'
+import { PlayCourseTeacher } from './formation/detail/teacher'
+import { MaterialIcon } from './globals/mat-icon'
 
 export {
     AppHead,
@@ -42,4 +46,9 @@ export {
     TabHeaderItem,
     TabContent,
     TabContentItem,
+    Comments,
+    CommentsForm,
+    PlayCourseDetails,
+    PlayCourseTeacher,
+    MaterialIcon,
 }

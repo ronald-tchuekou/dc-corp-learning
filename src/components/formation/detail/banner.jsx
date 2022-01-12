@@ -25,7 +25,7 @@ export const Banner = ({ code_play }) => {
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-10 gap-7 w-full">
                 <div className="lg:col-span-6">
-                    <div className="text-black text-5xl py-4 font-bold overflow-ellipsis whitespace-nowrap overflow-hidden">
+                    <div className="text-black text-2xl lg:text-5xl py-4 font-bold overflow-ellipsis whitespace-nowrap overflow-hidden">
                         {current.title}
                     </div>
                     <iframe
