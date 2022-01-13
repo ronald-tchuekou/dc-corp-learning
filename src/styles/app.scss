@@ -152,3 +152,22 @@ DRAWER CONTENT
         inset -4px -4px 10px rgba(54, 0, 122, 0.19);
     backdrop-filter: blur(5px);
 }
+
+.hljs {
+    display: block  !important;
+    overflow-x: auto !important;
+    font-size: 1em !important;
+    background: var(--background-light) !important;
+    box-shadow: 0 0 2 px var(--shadow) !important;
+    color: var(--base) !important;
+    padding: 1 rem !important;
+    --base: #a9b1d6;
+    --comment: #5d6791;
+    --variables: #bb9af7;
+    --number: #fd914e;
+    --attribute: #fd914e;
+    --string: #9ece6a;
+    --title: #7aa2f7;
+    --keyword: #bb9af7;
+    --background-light: #1b1e3d;
+}
