@@ -1,3 +1,10 @@
+/*
+ * Created on Mon Jan 17 2022
+ *
+ * @author Ronald Tchuekou <ronaldtchuekou@gmail.com>
+ * Copyright (c) 2022 dc-corp
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Rounded');
 
@@ -153,8 +160,21 @@ DRAWER CONTENT
     backdrop-filter: blur(5px);
 }
 
+.curcus-item {
+    background: linear-gradient(92.36deg, rgba(79, 0, 180, 0.035) 0%, rgba(17, 0, 160, 0.035) 100%);
+    box-shadow: 4px 4px 10px rgba(54, 0, 122, 0.35), inset -2px -2px 10px rgba(54, 0, 122, 0.19),
+        inset 4px 4px 10px rgba(225, 201, 255, 0.19);
+    backdrop-filter: blur(3px);
+}
+.curcus-item-logo {
+    background: linear-gradient(92.36deg, rgba(79, 0, 180, 0.045) 0%, rgba(17, 0, 160, 0.235) 100%);
+    box-shadow: 4px 4px 10px rgba(54, 0, 122, 0.35), inset -2px -2px 10px rgba(54, 0, 122, 0.19),
+        inset 4px 4px 10px rgba(225, 201, 255, 0.19);
+    backdrop-filter: blur(3px);
+}
+
 .hljs {
-    display: block  !important;
+    display: block !important;
     overflow-x: auto !important;
     font-size: 1em !important;
     background: var(--background-light) !important;

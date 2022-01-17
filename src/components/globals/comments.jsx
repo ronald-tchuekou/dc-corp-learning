@@ -1,3 +1,10 @@
+/*
+ * Created on Mon Jan 17 2022
+ *
+ * @author Ronald Tchuekou <ronaldtchuekou@gmail.com>
+ * Copyright (c) 2022 dc-corp
+ */
+
 import { useRouter } from 'next/router'
 import React from 'react'
 import { MaterialIcon } from '..'
@@ -15,14 +22,19 @@ export const Comments = ({}) => {
     )
 }
 
-export const CommentsForm = ({}) => {
+export const CommentsForm = ({ is_reply = false, remove_reply }) => {
+    const input_ref = React.useRef(null)
     const { lang } = React.useContext(LangContext)
+    React.useEffect(() => {
+        if (is_reply) input_ref.current.focus()
+    }, [is_reply])
     return (
         <div className="mb-5 py-4 border-t border-purple-500">
             <div className="lg:text-base text-blue-700">{Lang.enter_your_comment[lang]}</div>
             <div className="w-full mt-1 text-lg lg:w-1/2">
                 <div className="pl-1 pt-2 text-gray-500">{Lang.username[lang]}</div>
                 <input
+                    ref={input_ref}
                     type="text"
                     className="px-3 mt-1 py-2 w-full rounded-md border border-purple-400 bg-gray-100"
                     placeholder={Lang.username[lang]}
@@ -37,26 +49,42 @@ export const CommentsForm = ({}) => {
                     placeholder={Lang.what_i_have_to_say[lang]}
                 ></textarea>
             </div>
-            <button className="transition hover:shadow-lg mt-4 bg-purple-700 text-white text-base px-6 py-2 rounded-md">
-                {Lang.send[lang]}
-            </button>
+            <div className="flex flex-row space-x-4">
+                <button className="transition hover:shadow-lg mt-4 bg-purple-700 text-white text-base px-6 py-2 rounded-md">
+                    {Lang.send[lang]}
+                </button>
+                <button
+                    onClick={remove_reply}
+                    className={`transition hover:shadow-lg mt-4 bg-yellow-500 text-white text-base px-6 py-2 rounded-md ${
+                        is_reply ? '' : 'hidden'
+                    }`}
+                >
+                    {Lang.cancel[lang]}
+                </button>
+            </div>
         </div>
     )
 }
 
 export const CommentContent = () => {
     const [comments, setComments] = React.useState([1, 2, 3])
+    const [show_reply, setReply] = React.useState(-1)
     return (
         <div className="mb-5 py-4 border-t border-purple-500 space-y-4">
             {comments.map((item, i) => (
-                <CommentContainer answer={i === 0 ? [11, 12] : []} key={i} item={item} />
+                <CommentContainer
+                    show_reply={show_reply === i}
+                    setReply={(p) => setReply(p ? i : -1)}
+                    answer={i === 0 ? [11, 12] : []}
+                    key={i}
+                    item={item}
+                />
             ))}
         </div>
     )
 }
 
-export const CommentContainer = ({ item, answer = [] }) => {
-    const [show_reply, setReply] = React.useState(false)
+export const CommentContainer = ({ item, answer = [], show_reply = false, setReply }) => {
     const router = useRouter()
     function reply() {
         // TODO
@@ -74,7 +102,7 @@ export const CommentContainer = ({ item, answer = [] }) => {
                 </div>
                 {show_reply ? (
                     <div id={`comment-${item}`}>
-                        <CommentsForm />
+                        <CommentsForm is_reply={show_reply} remove_reply={() => setReply(false)} />
                     </div>
                 ) : (
                     <></>

@@ -1,3 +1,10 @@
+/*
+ * Created on Mon Jan 17 2022
+ *
+ * @author Ronald Tchuekou <ronaldtchuekou@gmail.com>
+ * Copyright (c) 2022 dc-corp
+ */
+
 import { useRouter } from 'next/router'
 import React from 'react'
 import { Lang } from '../../lang'

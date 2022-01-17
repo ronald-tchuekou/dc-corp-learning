@@ -1,7 +1,7 @@
 import { AppHead } from './head'
 import { AppHeader } from './globals/header'
 import { AppFooter } from './globals/footer'
-import { Container } from './globals/container'
+import { Container, Title, SubTitle, Code, CodeSingle, Paragraph } from './globals/container'
 import { Banner as HomeBanner } from './home/banner'
 import { Section1 as HomeSection1 } from './home/section1'
 import { Section2 as HomeSection2 } from './home/section2'
@@ -21,6 +21,8 @@ import { Comments, CommentsForm } from './globals/comments'
 import { PlayCourseDetails } from './formation/detail/detail'
 import { PlayCourseTeacher } from './formation/detail/teacher'
 import { MaterialIcon } from './globals/mat-icon'
+import { Banner as CurcusBanner } from './cursus/banner'
+import { Curculigram } from './cursus/curculigram'
 
 export {
     AppHead,
@@ -51,4 +53,11 @@ export {
     PlayCourseDetails,
     PlayCourseTeacher,
     MaterialIcon,
+    Title,
+    SubTitle,
+    Code,
+    CodeSingle,
+    Paragraph,
+    CurcusBanner,
+    Curculigram,
 }

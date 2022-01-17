@@ -1,7 +1,14 @@
+/*
+ * Created on Mon Jan 17 2022
+ *
+ * @author Ronald Tchuekou <ronaldtchuekou@gmail.com>
+ * Copyright (c) 2022 dc-corp
+ */
+
 import React from 'react'
+import { Code, Paragraph, Title, CodeSingle } from '../..'
 import { LangContext } from '../../../contexts'
 import { Lang } from '../../../lang'
-import Prism from 'prismjs'
 
 export const PlayCourseDetails = ({}) => {
     const { lang } = React.useContext(LangContext)
@@ -9,23 +16,24 @@ export const PlayCourseDetails = ({}) => {
         <div className="mb-1 space-y-6">
             <div className="text-3xl lg:text-5xl text-black font-semibold">{Lang.about_this_cours[lang]}</div>
             <Paragraph>
-                Le problème lorsque l'on cherche à apprendre un nouveau langage est que l'on se retape systématiquement
-                les bases : Les variables, les fonctions, les conditions... Ce qui peut s'avérer pénible lorsque l'on
-                connait déjà un autre langage de programmation. Aussi, je vous propose d'utiliser les connaissances que
-                vous avez déjà en PHP afin d'accélerer votre apprentissage du JavaScript.
+                {"Le problème lorsque l'on cherche à apprendre un nouveau langage est que l'on se retape systématiquement" +
+                    "les bases : Les variables, les fonctions, les conditions... Ce qui peut s'avérer pénible lorsque l'on" +
+                    "connait déjà un autre langage de programmation. Aussi, je vous propose d'utiliser les connaissances que" +
+                    "vous avez déjà en PHP afin d'accélerer votre apprentissage du JavaScript."}
             </Paragraph>
             <Title>Les variables</Title>
             <Paragraph>
-                Les variables en JavaScript doivent être déclarées avant d'être utilisées mais il n'est pas nécessaire
-                de les préfixer par un <CodeSingle>$</CodeSingle>
+                {`Les variables en JavaScript doivent être déclarées avant d'être utilisées mais il n'est pas nécessaire
+                de les préfixer par un`}{' '}
+                <CodeSingle>$</CodeSingle>
             </Paragraph>
             <Code code={'var a = 1\na // 1'} />
             <Paragraph>
-                Il n'est d'ailleurs pas nécessaire de terminer nos instructions par des <CodeSingle>;</CodeSingle>.
+                {`Il n'est d'ailleurs pas nécessaire de terminer nos instructions par des`} <CodeSingle>;</CodeSingle>.
             </Paragraph>
             <Paragraph>
-                Les variables ont des types similaires à ceux que l'on connait en PHP. En revanche il n'existe pas de
-                tableaux associatifs. Ils sont "remplacés" par des objets.
+                {`Les variables ont des types similaires à ceux que l'on connait en PHP. En revanche il n'existe pas de
+                tableaux associatifs. Ils sont "remplacés" par des objets.`}
             </Paragraph>
             <Code
                 code={
@@ -47,8 +55,8 @@ export const PlayCourseDetails = ({}) => {
                 }
             />
             <Paragraph>
-                Pour la concaténation le JavaScript n'utilisent pas l'opérateur <CodeSingle>.</CodeSingle> mais une
-                simple addition
+                {`Pour la concaténation le JavaScript n'utilisent pas l'opérateur `} <CodeSingle>.</CodeSingle>
+                {` mais une simple addition`}
             </Paragraph>
             <Title>Les conditions</Title>
             <Paragraph>Les conditions fonctionnent comme en PHP à un détail prèt.</Paragraph>
@@ -66,7 +74,7 @@ export const PlayCourseDetails = ({}) => {
 
             <Title>Les boucles</Title>
             <Paragraph>
-                Les boucles s'écrivent de la même façon qu'en PHP avec le <CodeSingle>while</CodeSingle> ou le{' '}
+                {`Les boucles s'écrivent de la même façon qu'en PHP avec le`} <CodeSingle>while</CodeSingle> ou le{' '}
                 <CodeSingle>for</CodeSingle>
             </Paragraph>
             <Code
@@ -75,14 +83,14 @@ export const PlayCourseDetails = ({}) => {
                 }
             />
             <Paragraph>
-                En JavaScript il n'existe pas de boucles <CodeSingle>foreach</CodeSingle> (on verra comment contourner
-                le problème) plus tard
+                {`En JavaScript il n'existe pas de boucles `}
+                <CodeSingle>foreach</CodeSingle> (on verra comment contourner le problème) plus tard
             </Paragraph>
 
             <Title>Les fonctions</Title>
             <Paragraph>
-                Les fonctions peuvent s'écrire comme en PHP et sont un type de variable particulier. On pourra ainsi les
-                stocker dans une variable.
+                {`Les fonctions peuvent s'écrire comme en PHP et sont un type de variable particulier. On pourra ainsi les
+                stocker dans une variable.`}
             </Paragraph>
             <Code
                 code={
@@ -98,41 +106,9 @@ export const PlayCourseDetails = ({}) => {
                 }
             />
             <Paragraph>
-                En JavaScript il n'existe pas de boucles <CodeSingle>foreach</CodeSingle> (on verra comment contourner
-                le problème) plus tard
+                {`En JavaScript il n'existe pas de boucles `}
+                <CodeSingle>foreach</CodeSingle> (on verra comment contourner le problème) plus tard
             </Paragraph>
         </div>
     )
-}
-
-export const Title = ({ children }) => {
-    return <div className="text-2xl lg:text-4xl text-black font-bold">{children}</div>
-}
-
-export const SubTitle = ({ children }) => {
-    return <div className="text-xl lg:text-2xl text-black font-bold">{children}</div>
-}
-
-export const Paragraph = ({ children }) => {
-    return <div className="text-base lg:text-lg text-gray-700 font-bold">{children}</div>
-}
-
-export const Code = ({ code, language = 'js' }) => {
-    const ref = React.useRef(null)
-    React.useEffect(() => {
-        if (ref && ref.current) Prism.highlightElement(ref.current)
-    }, [])
-    return (
-        <div className="rounded-lg overflow-hidden">
-            <pre className="line-numbers hljs rounded-lg">
-                <code ref={ref} className={`language-${language}`}>
-                    {code.trim()}
-                </code>
-            </pre>
-        </div>
-    )
-}
-
-export const CodeSingle = ({ children }) => {
-    return <code className="p-1 text-base bg-purple-200 text-gray-700 rounded-md">{children}</code>
 }

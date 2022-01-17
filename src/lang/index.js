@@ -1,3 +1,10 @@
+/*
+ * Created on Mon Jan 17 2022
+ *
+ * @author Ronald Tchuekou <ronaldtchuekou@gmail.com>
+ * Copyright (c) 2022 dc-corp
+ */
+
 export const Lang = {
     home: {
         fr: 'Accueil',
@@ -183,6 +190,10 @@ export const Lang = {
         fr: 'Envoyer',
         en: 'Send',
     },
+    cancel: {
+        fr: 'Annuler',
+        en: 'Cancel',
+    },
     comments: {
         fr: 'Commentaires',
         en: 'Comments',
@@ -206,5 +217,17 @@ export const Lang = {
     reply: {
         fr: 'Répondre',
         en: 'Reply',
+    },
+    learn_the: {
+        fr: 'Appredre le',
+        en: 'Learn the',
+    },
+    web_development: {
+        fr: 'développement web',
+        en: 'web development',
+    },
+    learn_base_of_web_dev: {
+        fr: 'Apprenez les bases du développement web et apprenez pas à pas comment construire un site web complet.',
+        en: 'Learn the basics of web development and learn step by step how to build a complete website.',
     },
 }

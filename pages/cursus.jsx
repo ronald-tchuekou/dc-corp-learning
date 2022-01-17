@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppFooter, AppHead, AppHeader } from '../src/components'
+import { AppFooter, AppHead, AppHeader, Curculigram, CurcusBanner } from '../src/components'
 import { CurrentPathContext, LangContext } from '../src/contexts'
 import { ENV } from '../src/enviroments/env'
 import { Lang } from '../src/lang'
@@ -33,7 +33,8 @@ export default function Cursus() {
             <CurrentPathContext.Provider value={path_context}>
                 <AppHead title={Lang.cursus[lang]} />
                 <AppHeader />
-                <main className="container mx-auto bg-red-200 h-10"></main>
+                <CurcusBanner />
+                <Curculigram />
                 <AppFooter />
             </CurrentPathContext.Provider>
         </LangContext.Provider>
